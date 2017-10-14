@@ -55,10 +55,17 @@ public class Config extends WebMvcConfigurerAdapter {
 		return messageSource;
 	}
 
-	static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-	static final String url = "jdbc:mysql://" + "127.10.221.130" + ":" + "3306" + "/" + "basictutor";
-	static final String user = "adminTVitrUP";
-	static final String password = "n-WzIMwcQDcQ";
+	static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";  
+	String url =// "jdbc:mysql://" + "127.10.221.130" + ":" + "3306" + "/" + "basictutor";
+			//"jdbc:mysql//mysql:3306/basictutor";
+			"jdbc:mysql//sql11.freesqldatabase.com:3306/sql11199469";
+	String user = "sql11199469";
+	String password = "abveRCFyUM";
+	
+//	static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
+//	static final String url = "jdbc:mysql://" + "127.10.221.130" + ":" + "3306" + "/" + "basictutor";
+//	static final String user = "adminTVitrUP";
+//	static final String password = "n-WzIMwcQDcQ";
 
 	@Bean(name = "dataSource")
 	public DataSource getDataSource() {

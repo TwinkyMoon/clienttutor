@@ -24,9 +24,23 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 /*@PropertySource(value = { "classpath:application.properties" })*/
 public class HibernateConfig {
 	static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";  
-	String url = "jdbc:mysql://" + "127.10.221.130" + ":" + "3306" + "/" + "basictutor";
-	String user = "adminTVitrUP";
-	String password = "n-WzIMwcQDcQ";
+	String url =// "jdbc:mysql://" + "127.10.221.130" + ":" + "3306" + "/" + "basictutor";
+			//"jdbc:mysql//mysql:3306/basictutor";
+			"jdbc:mysql//sql11.freesqldatabase.com:3306/sql11199469";
+	String user = "sql11199469";
+	String password = "abveRCFyUM";
+	//String user = "adminTVitrUP";
+	//String password = "n-WzIMwcQDcQ";
+	/*
+	 * The following service(s) have been created in your project: mysql.
+
+       Username: adminTVitrUP
+       Password: n-WzIMwcQDcQ
+  Database Name: basictutor
+ Connection URL: mysql://mysql:3306/
+
+For more information about using this template, including OpenShift considerations, see https://github.com/sclorg/mysql-container/blob/master/5.7/README.md.
+	 */
 	
 	/*@Autowired
 	private Environment env;*/
