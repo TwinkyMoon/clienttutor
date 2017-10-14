@@ -17,6 +17,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 import org.apache.commons.dbcp.BasicDataSource;
 
+import java.sql.SQLException;
 import java.util.Properties;
 
 import javax.sql.DataSource;
@@ -58,7 +59,7 @@ public class Config extends WebMvcConfigurerAdapter {
 	static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";  
 	String url =// "jdbc:mysql://" + "127.10.221.130" + ":" + "3306" + "/" + "basictutor";
 			//"jdbc:mysql//mysql:3306/basictutor";
-			"jdbc:mysql//sql11.freesqldatabase.com:3306/sql11199469";
+			"jdbc:mysql://" + "sql11.freesqldatabase.com" + ":" + "3306" + "/" + "sql11199469";
 	String user = "sql11199469";
 	String password = "abveRCFyUM";
 	
@@ -69,18 +70,20 @@ public class Config extends WebMvcConfigurerAdapter {
 
 	@Bean(name = "dataSource")
 	public DataSource getDataSource() {
+	
 		BasicDataSource dataSource = new BasicDataSource();
 		dataSource.setDriverClassName(JDBC_DRIVER);
 		dataSource.setUrl(url);
 		dataSource.setUsername(user);
 		dataSource.setPassword(password);
-
+		System.out.print(" Diana Here getDataSource1 " + dataSource.getUrl() + " " + dataSource.getUsername() + " \n"); 
 		return dataSource;
 	}
 
 	@Autowired
 	@Bean(name = "sessionFactory")
 	public LocalSessionFactoryBean getSessionFactory() {
+		System.out.print(" Diana Here getSessionFactory1"+ " \n");
 		LocalSessionFactoryBean  sessionFactory = new LocalSessionFactoryBean ();
 		sessionFactory.setDataSource(getDataSource());
 		sessionFactory.setPackagesToScan("com.uptotech.server_tutor.model");
@@ -89,8 +92,9 @@ public class Config extends WebMvcConfigurerAdapter {
 	}
 
 	private Properties hibernateProperties() {
+		System.out.print(" Diana HerehibernateProperties"+ " \n");
 		 Properties properties = new Properties();
-	        properties.put("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
+		 properties.put("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
 	        properties.put("hibernate.show_sql", "true");
 	        properties.put("hibernate.format_sql", "true");
 	        return properties;   
@@ -99,8 +103,15 @@ public class Config extends WebMvcConfigurerAdapter {
 	 @Bean
 	    @Autowired
 	    public HibernateTransactionManager transactionManager(SessionFactory s) {
+
 	       HibernateTransactionManager txManager = new HibernateTransactionManager();
 	       txManager.setSessionFactory(s);
+	 /*  	try {
+			System.out.print(" Diana Here 1"+ " \n " + txManager.getDataSource().getConnection());
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}*/
 	       return txManager;
 	    }
 	

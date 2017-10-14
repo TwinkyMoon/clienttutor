@@ -22,7 +22,7 @@ public class BaseController {
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String sayHello(ModelMap model) {
-		model.addAttribute("greeting", "push 12");
+		model.addAttribute("greeting", "push 14");
 		return "index";
 	}
 

@@ -43,7 +43,7 @@ public class TestDAOImpl implements TestDAO {
 		 */
 
 		Session session = sessionFactory.getCurrentSession();
-
+		
 		return (ArrayList<EnglishWord>) session.createCriteria(EnglishWord.class).list();
 
 	}
